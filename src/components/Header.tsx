@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, User, Bell, LogIn } from "lucide-react";
@@ -10,7 +11,7 @@ const Header = () => {
     { label: "Accueil", href: "/" },
     { label: "Produits", href: "#produits" },
     { label: "Investir", href: "#investir" },
-    { label: "À Propos", href: "#apropos" },
+    { label: "À Propos", href: "/about" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -43,13 +44,17 @@ const Header = () => {
           <Button variant="ghost" size="sm">
             <Bell className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm">
-            <User className="h-4 w-4" />
-            <span className="ml-1">Mon Compte</span>
+          <Button variant="ghost" size="sm" asChild>
+            <Link to="/dashboard">
+              <User className="h-4 w-4" />
+              <span className="ml-1">Mon Compte</span>
+            </Link>
           </Button>
-          <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
-            <LogIn className="h-4 w-4 mr-1" />
-            Se Connecter
+          <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300" asChild>
+            <Link to="/login">
+              <LogIn className="h-4 w-4 mr-1" />
+              Se Connecter
+            </Link>
           </Button>
         </div>
 
@@ -73,13 +78,17 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-4 pt-4 border-t">
-                <Button variant="outline" className="w-full">
-                  <User className="h-4 w-4 mr-2" />
-                  Mon Compte
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/dashboard">
+                    <User className="h-4 w-4 mr-2" />
+                    Mon Compte
+                  </Link>
                 </Button>
-                <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Se Connecter
+                <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300" asChild>
+                  <Link to="/login">
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Se Connecter
+                  </Link>
                 </Button>
               </div>
             </div>
